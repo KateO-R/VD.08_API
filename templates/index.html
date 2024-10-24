@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Romantic Weather Forecast</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            font-family: 'Dancing Script', cursive;
+        }
+        .container {
+            padding-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #fff5e1;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        .btn-romantic {
+            background-color: #ff6b6b;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+        .result {
+            color: #F08080;
+            font-size: 1.5em;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Weather and Quotes</h1>
+
+    <div class="quote mt-4">
+        <h3>Quote of the Day</h3>
+        <p>"{{ quote.content }}"</p>
+        <p><em>- {{ quote.author }}</em></p>
+    </div>
+
+    <form method="post" class="form-inline justify-content-center">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" name="city" placeholder="Enter the city name" required>
+        </div>
+        <button type="submit" class="btn-romantic mb-2">Check the Weather</button>
+    </form>
+
+    <div class="result">
+        {% if weather %}
+            <h3>Weather in {{weather["name"]}}</h3>
+            <p>Temperature: {{weather["main"]["temp"]}}°C</p>
+            <p>Condition: {{weather["weather"][0]["description"]}}</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
